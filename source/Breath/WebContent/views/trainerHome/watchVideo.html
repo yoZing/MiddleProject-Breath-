@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../../js/jquery-3.6.0.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="../../css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="../../css/uploadVideo.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js" integrity="sha512-eP6ippJojIKXKO8EPLtsUMS+/sAGHGo1UN/38swqZa1ypfcD4I0V/ac5G3VzaHfDaklFmQLEs51lhkkVaqg60Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> 
+
+</head>
+<body>
+	<!-- HEADER -->
+  <header>
+    <div class="inner">
+
+      <a href="/Breath/trainerHome/detail.do" class="logo">
+        Chloeting
+      </a>
+
+      <ul class="main-menu">
+      	<li class="item">
+      		<div class="item_name" id="back"><button type="button" onclick="location.href='/Breath/trainerHome/detail.do'">뒤로가기</button></div>
+      	</li>
+        <li class="item">
+          <div class="item__name" id="upload">업로드</div>
+        </li>
+        <li class="item">
+          <div class="item__name" id="update">수정</div>
+        </li>
+        <li class="item">
+          <div class="item__name" id="delete">삭제</div>
+        </li>
+      </ul>
+    </div>
+  </header>
+  
+  <section class="main-intro">
+    <div class="inner">
+    <div id="here">
+    <!-- 여기에 영상 들어가요 ^^ -->
+    </div>
+    
+<!--           <video controls width="500" height="300"> -->
+<!-- 			<source src="../../upload_files/19ebb0a43f8c4bc096633c3dd400b59btrailer.mp4" type="video/mp4">  -->
+<!--           </video> -->
+<!--           <iframe width="500" height="300" src="../../upload_files/19ebb0a43f8c4bc096633c3dd400b59btrailer.mp4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+<!--           <iframe width="500" height="300" src="../../upload_files/c9fe42d887c644bca11e326fe6569517trailer.mp4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+<!--           <br> -->
+<!--           <span> -->
+<!--           오늘은 운동영상을 올려보았어요ㅎㅎㅎ<br> 너무 재밌다~ 그죠ㅎㅎㅎㅎ 내일도 즐거운 영상 기대하세요 ^^ -->
+<!--           </span> -->
+<!--           <video controls width="500" height="300"  -->
+<!--           src="../../upload_files/trailer.mp4" type="video/mp4"> -->
+<!--           </video> -->
+<!--           <br> -->
+<!--           <div> -->
+<!--           여기가 contents-text2 -->
+<!--           </div> -->
+<!--           <video controls width="500" height="300"> -->
+<!-- 			<source src="../../upload_files/trailer.mp4" type="video/mp4">  -->
+<!--           </video> -->
+<!--           <br> -->
+<!--           <div> -->
+<!--           여기가 contents-text3 -->
+<!--           </div> -->
+<!--           <video controls width="500" height="300"> -->
+<!-- 			<source src="../../upload_files/trailer.mp4" type="video/mp4">  -->
+<!--           </video> -->
+<!--           <br> -->
+<!--           <div> -->
+<!--           여기가 contents-text4 -->
+<!--           </div> -->
+<!--           <video controls width="500" height="300"> -->
+<!-- 			<source src="../../upload_files/trailer.mp4" type="video/mp4">  -->
+<!--           </video> -->
+<!--           <br> -->
+<!--           <div> -->
+<!--           여기가 contents-text5 -->
+<!--           </div> -->
+<!--           <video controls width="500" height="300"> -->
+<!-- 			<source src="../../upload_files/trailer.mp4" type="video/mp4">  -->
+<!--           </video> -->
+<!--           <br> -->
+<!--           <div> -->
+<!--           여기가 contents-text6 -->
+          </div>
+    </div>
+  </section>
+  
+  <!--VIDEO 업로드 Modal start -->
+	<div id="myModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content -->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" id="close1" class="close" data-dismiss="modal">&times;</button>
+					<h3 class="modal-title">Upload Video</h3>
+				</div>
+				<div class="modal-body">
+					<form id="upload-form" method="post" 
+					enctype="multipart/form-data">
+					<label for="file">파일</label>
+					<input type="file" name="atchId"><br>
+					<label for="content">내용</label>
+					<div class="form-group">
+					<textarea class="form-control" rows="5" name="content">
+					</textarea>
+					</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<input type="button" value="업로드" id="upload-file">
+					<button type="button" id="close" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--  VIDEO 업로드 Modal end -->
+  
+ <script>
+ // 동영상을 클릭하면 확대해서 보여주기
+ $()
+ window.onload = function() {
+	  let url = window.location.href;
+	  getAllVideoList(url);
+	};
+
+function getAllVideoList(url){
+	$.ajax({
+		async: true,
+		url : '/Breath/getAllVideoList.Video',
+		type : 'get',
+		data : {
+			'url' : url
+		},
+		success : function(res) {
+			$('#here').html(res);
+		},
+		error : function(xhr) {
+			alert(xhr.status);
+		},
+		dataType : 'html'
+		
+	});
+}
+ 
+ $('#upload').on('click', function(){
+	 $('#myModal').modal({backdrop : 'static'});
+ });
+ 
+ $('.modal').on('hidden.bs.modal', function (e) {
+	    console.log('modal close');
+	  $(this).find('form')[0].reset();
+ });
+ 
+ $('#upload-file').on('click', function(){
+	 var form = $('#upload-form')[0];
+     var formData = new FormData(form);
+	 
+	 $.ajax({
+		url : '/Breath/insert.Video',
+		type : 'post',
+		data : formData,
+			success : function(res) {
+			  $('#here').html(res);
+			  $('#myModal').modal('hide');
+			},
+			error : function(xhr) {
+				alert(xhr.status);
+			},
+			dataType : 'html',
+			contentType : false,
+	        processData : false,
+	        cache: false
+		});  
+ });
+ 
+ </script> 
+  
+</body>
+</html>

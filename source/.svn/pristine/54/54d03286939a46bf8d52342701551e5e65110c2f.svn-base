@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+			PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+			"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="reply">
+	<resultMap class="reply.vo.ReplyVO" id="replyMap">
+		<result property="commentNum" column="COMMENT_NUM"/>
+		<result property="memId" column="MEM_ID"/>
+		<result property="postNum" column="POST_NUM"/>
+		<result property="commDt" column="COMM_DT"/>
+		<result property="content" column="CONTENT"/>
+		<result property="likes" column="LIKES"/>
+		<result property="ipAdd" column="IP_ADD"/>
+		<result property="updateDt" column="UPDATE_DT"/>
+		<result property="deleteDt" column="DELETE_DT"/>
+		<result property="status" column="STATUS"/>
+	</resultMap>
+	
+	<insert id="insertLineFeed" parameterClass="replyVO">
+		<selectKey keyProperty="commentNum" resultClass="String">
+			SELECT SEQ_LNFD_REPLY.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO LNFD_REPLY(COMMENT_NUM,MEM_ID,POST_NUM,COMM_DT,CONTENT,LIKES,IP_ADD,UPDATE_DT,DELETE_DT,STATUS)
+		 VALUES(#commentNum#,#memId#,#postNum#,SYSDATE,#content#,#likes#,#ipAdd#,#updateDt#,#deleteDt#,#status#)
+	</insert>
+	
+	<select id="getAllReply" parameterClass="replyVO" resultMap="replyMap">
+		SELECT *
+		  FROM LNFD_REPLY
+		 WHERE POST_NUM = #postNum#
+		 ORDER BY COMM_DT
+	</select>
+	
+	<update id="deleteReply" parameterClass="replyVO" >
+		UPDATE LNFD_REPLY
+		   SET STATUS = #status#
+		 WHERE COMMENT_NUM = #commentNum#  
+		       
+	</update>
+	
+	<update id="updateReply" parameterClass="replyVO">
+	</update>
+	
+</sqlMap>		
